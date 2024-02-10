@@ -42,6 +42,21 @@ export class AuthService {
     );
   }
 
+  register(data: any){
+    let URL = URL_SERVICIOS+"/users/register";
+    return this.http.post(URL, data);
+  }
+
+  logout(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    this.user = '';
+    this.token = '';
+    setTimeout(() =>{
+      this.router.navigateByUrl("/auth/login");
+    }, 50);
+  }
+
   saveLocalStorage(auth:any){
     if(auth && auth.USER.token){
       localStorage.setItem("token", auth.USER.token);

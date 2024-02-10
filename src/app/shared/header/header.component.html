@@ -898,7 +898,8 @@
                         </li>
 
                         <li class="account-access rbt-user-wrapper d-none d-xl-block">
-                            <a href="#"><i class="feather-user"></i>Admin</a>
+                            <a href="#" *ngIf="user"><i class="feather-user" ></i>{{ user.name + (user.surname ? user.surname : '') }}</a>
+                            <a href="#" *ngIf="!user"><i class="feather-user" ></i>Ingresa</a>
                             <div class="rbt-user-menu-list-wrapper">
                                 <div class="inner">
                                     <div class="rbt-admin-profile">
@@ -978,7 +979,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="index.html">
+                                            <a href="#" onclick="return false;" (click)="logout()">
                                                 <i class="feather-log-out"></i>
                                                 <span>Logout</span>
                                             </a>
